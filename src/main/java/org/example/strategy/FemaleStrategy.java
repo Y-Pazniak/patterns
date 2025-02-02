@@ -1,6 +1,8 @@
-package org.example;
+package org.example.strategy;
 
-public class FemaleStrategy implements DrinkStrategy{
+import org.example.VisitorType;
+
+public class FemaleStrategy implements DrinkStrategy {
     public static final VisitorType VISITOR_TYPE = VisitorType.FEMALE;
     @Override
     public String getDrink() {

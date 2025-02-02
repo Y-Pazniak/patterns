@@ -1,20 +1,21 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.example.strategy.DrinkStrategy;
 
 public class BartenderContext {
-    private final Map<VisitorType, DrinkStrategy> strategyMap;
+    private DrinkStrategy drinkStrategy;
 
-    public BartenderContext() {
-        strategyMap = new HashMap<>();
-        strategyMap.put(FemaleStrategy.VISITOR_TYPE, new FemaleStrategy());
-        strategyMap.put(MaleStrategy.VISITOR_TYPE, new MaleStrategy());
-        strategyMap.put(KidStrategy.VISITOR_TYPE, new KidStrategy());
+    public BartenderContext(final DrinkStrategy drinkStrategy) {
+        this.drinkStrategy = drinkStrategy;
     }
 
-    public String getDrink(final VisitorType visitorType){
-        DrinkStrategy strategy = strategyMap.get(visitorType);
-        return strategy == null ? "unknown visitor's type" : strategy.getDrink();
+    public void setStrategy(final DrinkStrategy drinkStrategy) {
+        if (drinkStrategy != null) {
+            this.drinkStrategy = drinkStrategy;
+        }
+    }
+
+    public String getDrink(){
+        return drinkStrategy.getDrink();
     }
 }
