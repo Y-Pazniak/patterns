@@ -11,7 +11,7 @@ public class ProxyBartender implements DrinkService {
         logger.info(String.format("Request for: name=%s, age=%s, drink=%s", name, age, drink));
         if (!isAdult(age)) {
             logger.warning("Request denied, too young: " + age);
-            System.out.printf("Sorry, %s - too young : %s", name, age);
+            System.out.printf("Sorry, %s - too young: %s", name, age);
             return;
         }
 
