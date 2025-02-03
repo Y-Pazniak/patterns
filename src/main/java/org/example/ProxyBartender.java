@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.*;
 import java.util.logging.Logger;
 
 public class ProxyBartender implements DrinkService {
@@ -12,7 +11,7 @@ public class ProxyBartender implements DrinkService {
         logger.info(String.format("Request for: name=%s, age=%s, drink=%s", name, age, drink));
         if (!isAdult(age)) {
             logger.warning("Request denied, too young: " + age);
-            System.out.println("Sorry, " + name + " - too young :(");
+            System.out.printf("Sorry, %s - too young : %s", name, age);
             return;
         }
 
