@@ -1,17 +1,36 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Collections.sort(integers);
+        System.out.println(binarySearch(integers, 8));
+    }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    private static int binarySearch(List<Integer> list, int searchNumber) {
+        int pivot = list.size() / 2;
+
+        int startSearch = 0;
+        int endSearch = list.size() - 1;
+
+        while (startSearch <= endSearch) {
+            if (searchNumber == list.get(pivot)) {
+                return pivot;
+            } else {
+                if (searchNumber > list.get(pivot)){
+                    startSearch = pivot + 1;
+                } else {
+                    endSearch = pivot - 1;
+                }
+                pivot = startSearch + (endSearch - startSearch) / 2;
+            }
         }
+        return -1;
     }
 }
